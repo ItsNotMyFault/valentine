@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💘</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 70px 90px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      max-width: 700px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    button {
+      font-size: 22px;
+      padding: 16px 40px;
+      margin: 10px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ccc;
+      position: absolute;
+    }
+
+    /* YES screen */
+    .yes-container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 40px;
+      text-align: left;
+    }
+
+    .yes-container img {
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .yes-text h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .yes-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Gaëlle veux-tu être ma valentine 💋❤️<br>xoxo</h1>
+    <button id="yesBtn">Oui ❤️</button>
+  </div>
+
+  <button id="noBtn">Non 😢</button>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    function moveNoButton() {
+      const padding = 20;
+      const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+      const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    }
+
+    setInterval(moveNoButton, 500);
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    moveNoButton();
+
+    document.getElementById("yesBtn").addEventListener("click", () => {
+      document.body.innerHTML = `
+        <div class="yes-container">
+          <img src="./image-name.jpg" alt="Valentine Image">
+          <div class="yes-text">
+            <h1>
+              OUIIIII 💘💘💘<br>
+              Je t’aime fort ❤️
+            </h1>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
